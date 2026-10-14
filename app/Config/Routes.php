@@ -19,3 +19,19 @@ $routes->get('account', 'Pages::account');
 $routes->get('portal', 'Pages::account');
 $routes->post('api/login', 'AuthApi::login');
 $routes->post('api/logout', 'AuthApi::logout');
+
+// Local public information pages.
+$routes->get('products', 'Pages::products');
+$routes->get('services', 'Pages::services');
+$routes->get('projects', 'Pages::projects');
+$routes->get('about', 'Pages::about');
+
+// Remaining public pages and local enquiry submission.
+$routes->get('contact', 'Pages::contact');
+$routes->get('faq', 'Pages::faq');
+$routes->get('privacy', 'Pages::privacy');
+$routes->get('terms', 'Pages::terms');
+$routes->get('cookies', 'Pages::cookies');
+$routes->get('refunds', 'Pages::refunds');
+$routes->get('thank-you', 'Pages::thankYou');
+$routes->post('api/enquiry', 'EnquiryApi::submit');
