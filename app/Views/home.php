@@ -21,7 +21,7 @@
     />
     <meta
       property="og:image"
-      content="https://sun-son-solar.plovindino1.chatgpt.site/assets/social-card.jpg"
+      content="<?= esc(base_url('assets/social-card.jpg'), 'attr') ?>"
     />
     <meta
       property="og:image:alt"
@@ -1441,7 +1441,7 @@
     </style>
     <link
       rel="canonical"
-      href="https://sun-son-solar.plovindino1.chatgpt.site/"
+      href="<?= esc(site_url(''), 'attr') ?>"
     />
   </head>
   <body data-page="home">
@@ -1460,13 +1460,13 @@
           Menu
         </button>
         <nav id="navigation" aria-label="Main navigation">
-          <a href="https://sun-son-solar.plovindino1.chatgpt.site/products/"
+          <a href="<?= esc(site_url('products'), 'attr') ?>"
             >Products</a
-          ><a href="https://sun-son-solar.plovindino1.chatgpt.site/services/"
+          ><a href="<?= esc(site_url('services'), 'attr') ?>"
             >Services</a
-          ><a href="https://sun-son-solar.plovindino1.chatgpt.site/projects/"
+          ><a href="<?= esc(site_url('projects'), 'attr') ?>"
             >Our approach</a
-          ><a href="https://sun-son-solar.plovindino1.chatgpt.site/about/"
+          ><a href="<?= esc(site_url('about'), 'attr') ?>"
             >About us</a
           ><a
             class="mobile-account-link"
@@ -1483,7 +1483,7 @@
             >Register</a
           ><a
             class="button small"
-            href="https://sun-son-solar.plovindino1.chatgpt.site/contact/"
+            href="<?= esc(site_url('contact/'), 'attr') ?>"
             >Let’s talk solar</a
           >
         </div>
@@ -1512,11 +1512,11 @@
             <div class="hero-buttons">
               <a
                 class="button light"
-                href="https://sun-son-solar.plovindino1.chatgpt.site/contact/"
+                href="<?= esc(site_url('contact/'), 'attr') ?>"
                 >Start your solar journey</a
               ><a
                 class="button glass"
-                href="https://sun-son-solar.plovindino1.chatgpt.site/services/"
+                href="<?= esc(site_url('services'), 'attr') ?>"
                 >Explore our services</a
               >
             </div>
@@ -1545,7 +1545,7 @@
           </p>
           <a
             class="underlink"
-            href="https://sun-son-solar.plovindino1.chatgpt.site/about/"
+            href="<?= esc(site_url('about'), 'attr') ?>"
             >Meet Sun Son Solar</a
           >
         </div>
@@ -1559,7 +1559,7 @@
             </div>
             <a
               class="button outline"
-              href="https://sun-son-solar.plovindino1.chatgpt.site/products/"
+              href="<?= esc(site_url('products'), 'attr') ?>"
               >Explore all products</a
             >
           </div>
@@ -1580,7 +1580,7 @@
               </p>
               <a
                 class="underlink"
-                href="https://sun-son-solar.plovindino1.chatgpt.site/products/"
+                href="<?= esc(site_url('products'), 'attr') ?>"
                 >Find your system components</a
               >
               <div class="product-tags">
@@ -1604,7 +1604,7 @@
         </div>
         <div class="steps">
           <a
-            href="https://sun-son-solar.plovindino1.chatgpt.site/services/#consultation"
+            href="<?= esc(site_url('services'), 'attr') ?>#consultation"
             class="step"
             ><span class="index">01</span>
             <h3>Consultation</h3>
@@ -1612,7 +1612,7 @@
               Discuss your energy use, priorities, property and project budget.
             </p></a
           ><a
-            href="https://sun-son-solar.plovindino1.chatgpt.site/services/#designing"
+            href="<?= esc(site_url('services'), 'attr') ?>#designing"
             class="step"
             ><span class="index">02</span>
             <h3>Designing</h3>
@@ -1620,7 +1620,7 @@
               Evaluate roof space, electrical loads and component compatibility.
             </p></a
           ><a
-            href="https://sun-son-solar.plovindino1.chatgpt.site/services/#permitting"
+            href="<?= esc(site_url('services'), 'attr') ?>#permitting"
             class="step"
             ><span class="index">03</span>
             <h3>Permitting</h3>
@@ -1629,7 +1629,7 @@
               authorities.
             </p></a
           ><a
-            href="https://sun-son-solar.plovindino1.chatgpt.site/services/#installation"
+            href="<?= esc(site_url('services'), 'attr') ?>#installation"
             class="step"
             ><span class="index">04</span>
             <h3>Installation</h3>
@@ -1643,7 +1643,7 @@
           <span>Already have a system? Let’s keep it working for you.</span
           ><a
             class="underlink"
-            href="https://sun-son-solar.plovindino1.chatgpt.site/services/#maintenance"
+            href="<?= esc(site_url('services'), 'attr') ?>#maintenance"
             >Maintenance, repair & monitoring</a
           >
         </div>
@@ -1656,7 +1656,7 @@
             <p>Good decisions start with good questions.</p>
             <a
               class="underlink"
-              href="https://sun-son-solar.plovindino1.chatgpt.site/contact/"
+              href="<?= esc(site_url('contact/'), 'attr') ?>"
               >Talk through your project</a
             >
           </div>
@@ -1731,7 +1731,7 @@
           <h2>Let’s put the sun<br />to work for you.</h2>
           <a
             class="button light"
-            href="https://sun-son-solar.plovindino1.chatgpt.site/contact/"
+            href="<?= esc(site_url('contact/'), 'attr') ?>"
             >Plan your solar project</a
           >
         </div>
@@ -1749,36 +1749,36 @@
         </div>
         <div>
           <h3>Explore</h3>
-          <a href="https://sun-son-solar.plovindino1.chatgpt.site/products/"
+          <a href="<?= esc(site_url('products'), 'attr') ?>"
             >Solar products</a
-          ><a href="https://sun-son-solar.plovindino1.chatgpt.site/services/"
+          ><a href="<?= esc(site_url('services'), 'attr') ?>"
             >Our services</a
-          ><a href="https://sun-son-solar.plovindino1.chatgpt.site/projects/"
+          ><a href="<?= esc(site_url('projects'), 'attr') ?>"
             >Project approach</a
-          ><a href="https://sun-son-solar.plovindino1.chatgpt.site/about/"
+          ><a href="<?= esc(site_url('about'), 'attr') ?>"
             >Our company</a
           >
         </div>
         <div>
           <h3>Connect</h3>
-          <a href="https://sun-son-solar.plovindino1.chatgpt.site/contact/"
+          <a href="<?= esc(site_url('contact/'), 'attr') ?>"
             >Request a consultation</a
           ><a href="<?= esc(site_url('login'), 'attr') ?>"
             >Employee sign in</a
           ><a href="<?= esc(site_url('register'), 'attr') ?>">Employee registration</a
-          ><a href="https://sun-son-solar.plovindino1.chatgpt.site/faq/"
+          ><a href="<?= esc(site_url('faq/'), 'attr') ?>"
             >Common questions</a
           >
         </div>
         <div>
           <h3>Information</h3>
-          <a href="https://sun-son-solar.plovindino1.chatgpt.site/privacy/"
+          <a href="<?= esc(site_url('privacy/'), 'attr') ?>"
             >Privacy policy</a
-          ><a href="https://sun-son-solar.plovindino1.chatgpt.site/terms/"
+          ><a href="<?= esc(site_url('terms/'), 'attr') ?>"
             >Terms & conditions</a
-          ><a href="https://sun-son-solar.plovindino1.chatgpt.site/cookies/"
+          ><a href="<?= esc(site_url('cookies/'), 'attr') ?>"
             >Cookie policy</a
-          ><a href="https://sun-son-solar.plovindino1.chatgpt.site/refunds/"
+          ><a href="<?= esc(site_url('refunds/'), 'attr') ?>"
             >Refund policy</a
           ><button class="text-button" data-cookies>Cookie preferences</button>
         </div>
@@ -1790,7 +1790,7 @@
     </footer>
     <a
       class="mobile-cta button"
-      href="https://sun-son-solar.plovindino1.chatgpt.site/contact/"
+      href="<?= esc(site_url('contact/'), 'attr') ?>"
       >Request a solar consultation</a
     >
     <section class="cookie-banner" aria-label="Cookie preferences" hidden>
@@ -1799,7 +1799,7 @@
         <p>
           Essential storage keeps the portal secure. Optional analytics helps us
           understand website use.
-          <a href="https://sun-son-solar.plovindino1.chatgpt.site/cookies/"
+          <a href="<?= esc(site_url('cookies/'), 'attr') ?>"
             >Read our cookie policy</a
           >.
         </p>

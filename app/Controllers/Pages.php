@@ -12,6 +12,63 @@ class Pages extends BaseController
         return $this->renderPage('home');
     }
 
+    public function products(): ResponseInterface
+    {
+        return $this->renderPage('products');
+    }
+
+    public function services(): ResponseInterface
+    {
+        return $this->renderPage('services');
+    }
+
+    public function projects(): ResponseInterface
+    {
+        return $this->renderPage('projects');
+    }
+
+    public function about(): ResponseInterface
+    {
+        return $this->renderPage('about');
+    }
+
+    public function contact(): ResponseInterface
+    {
+        return $this->renderPage('contact');
+    }
+
+    public function faq(): ResponseInterface
+    {
+        return $this->renderPage('faq');
+    }
+
+    public function privacy(): ResponseInterface
+    {
+        return $this->renderPage('privacy');
+    }
+
+    public function terms(): ResponseInterface
+    {
+        return $this->renderPage('terms');
+    }
+
+    public function cookies(): ResponseInterface
+    {
+        return $this->renderPage('cookies');
+    }
+
+    public function refunds(): ResponseInterface
+    {
+        return $this->renderPage('refunds');
+    }
+
+    public function thankYou(): ResponseInterface
+    {
+        return $this->renderPage('thank_you', 200, [
+            'reference' => session()->get('enquiry_reference'),
+        ]);
+    }
+
     public function registration(): ResponseInterface
     {
         return $this->renderPage('registration');
