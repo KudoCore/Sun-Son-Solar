@@ -1,4 +1,5 @@
--- Import this file through phpMyAdmin. Existing records are not removed.
+-- Import this file through phpMyAdmin, then import stakeholder_portal.sql.
+-- Existing records are not removed.
 -- The application reads its connection settings from .env.
 CREATE DATABASE IF NOT EXISTS sun_son_solar_local
   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -16,9 +17,10 @@ CREATE TABLE IF NOT EXISTS users (
     address VARCHAR(300) NULL,
     username VARCHAR(80) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
-    department VARCHAR(100) NOT NULL,
-    role ENUM('employee', 'ceo', 'it_head') NOT NULL DEFAULT 'employee',
+    department VARCHAR(100) NULL,
+    role VARCHAR(24) NOT NULL DEFAULT 'customer',
     approved TINYINT(1) NOT NULL DEFAULT 0,
+    is_active TINYINT(1) NOT NULL DEFAULT 1,
     consent_at DATETIME NOT NULL,
     created_at DATETIME NOT NULL,
     PRIMARY KEY (id),
