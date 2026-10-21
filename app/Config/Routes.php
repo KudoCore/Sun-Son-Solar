@@ -16,9 +16,27 @@ $routes->set404Override('App\\Controllers\\Pages::notFound');
 $routes->get('login', 'Pages::login');
 $routes->get('login.html', 'Pages::login');
 $routes->get('account', 'Pages::account');
-$routes->get('portal', 'Pages::account');
+$routes->get('profile', 'Pages::profile');
+$routes->get('lets-talk-solar', 'Pages::serviceRequest');
 $routes->post('api/login', 'AuthApi::login');
 $routes->post('api/logout', 'AuthApi::logout');
+$routes->get('portal', 'Pages::portal');
+$routes->get('api/portal/data', 'PortalApi::data');
+$routes->post('api/portal/booking', 'PortalApi::booking');
+$routes->post('api/portal/booking/cancel', 'PortalApi::cancelBooking');
+$routes->post('api/portal/profile', 'PortalApi::profile');
+$routes->post('api/portal/password', 'PortalApi::password');
+$routes->post('api/portal/ticket', 'PortalApi::ticket');
+$routes->post('api/portal/employee', 'PortalApi::employee');
+$routes->post('api/portal/booking/update', 'PortalApi::updateBooking');
+$routes->post('api/portal/checkin', 'PortalApi::checkin');
+$routes->post('api/portal/report', 'PortalApi::report');
+$routes->post('api/portal/announcement', 'PortalApi::announcement');
+$routes->post('api/portal/settings', 'PortalApi::settings');
+$routes->post('api/portal/notify', 'PortalApi::notify');
+$routes->post('api/portal/ticket/reply', 'PortalApi::ticketReply');
+$routes->post('api/portal/payment', 'PortalApi::payment');
+$routes->post('api/portal/testimonial', 'PortalApi::testimonial');
 
 // Local public information pages.
 $routes->get('products', 'Pages::products');

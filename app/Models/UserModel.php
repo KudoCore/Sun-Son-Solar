@@ -13,7 +13,7 @@ class UserModel extends Model
     protected $allowedFields = [
         'first_name', 'last_name', 'middle_name', 'birthday', 'gender',
         'email', 'phone', 'address', 'username', 'password_hash',
-        'department', 'department_id', 'phone_type', 'role', 'approved', 'consent_at', 'created_at',
+        'department', 'department_id', 'phone_type', 'role', 'approved', 'is_active', 'consent_at', 'created_at',
     ];
 
     public function accountExists(string $username, string $email): bool

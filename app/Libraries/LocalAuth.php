@@ -34,7 +34,7 @@ class LocalAuth
         // Recheck approval and password changes; session data cannot grant a role.
         $user = (new UserModel())->find($userId);
         $passwordVersion = (string) $session->get('password_version');
-        if (!$user || (int) $user['approved'] !== 1 ||
+        if (!$user || (int) $user['approved'] !== 1 || (int) ($user['is_active'] ?? 1) !== 1 ||
             !hash_equals(hash('sha256', $user['password_hash']), $passwordVersion)) {
             $this->logout();
             return null;

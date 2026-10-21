@@ -40,17 +40,40 @@ class AuthApi extends FormApiController
 
     public function login(): ResponseInterface
     {
-        $error = $this->checkFormRequest();
-        if ($error !== null) {
-            return $error;
+        $fallback = !str_starts_with(strtolower($this->request->getHeaderLine('Content-Type')), 'application/json');
+        if (!$fallback) {
+            $error = $this->checkFormRequest();
+            if ($error !== null) {
+                return $error;
+            }
+            $data = $this->request->getJSON(true);
+        } else {
+            if (strtoupper($this->request->getMethod()) !== 'POST' ||
+                !str_starts_with(strtolower($this->request->getHeaderLine('Content-Type')), 'application/x-www-form-urlencoded')) {
+                return $this->loginFailure(true, 415, 'Please reload the sign-in page and try again.');
+            }
+            if ($this->request->getHeaderLine('Origin') !== $this->getAllowedOrigin()) {
+                return $this->loginFailure(true, 403, 'This sign-in request was not accepted. Reload the page and try again.');
+            }
+            if (strlen($this->request->getBody()) > self::MAX_REQUEST_BYTES) {
+                return $this->loginFailure(true, 413, 'The sign-in request is too large.');
+            }
+            $expectedToken = session()->get('registration_csrf');
+            $submittedToken = $this->request->getPost('csrf_token');
+            if (!is_string($expectedToken) || !is_string($submittedToken) || !hash_equals($expectedToken, $submittedToken)) {
+                return $this->loginFailure(true, 403, 'Reload the sign-in page and try again.');
+            }
+            $data = $this->request->getPost();
         }
-        $data = $this->request->getJSON(true);
+        if (!is_array($data)) {
+            return $this->loginFailure($fallback, 400, 'Enter your username and password.');
+        }
         $username = $data['username'] ?? '';
         $password = $data['password'] ?? '';
         if (!is_string($username) || !is_string($password) ||
             !preg_match('/\A[a-zA-Z0-9_.-]{3,80}\z/', trim($username)) ||
             $password === '' || strlen($password) > 72 || str_contains($password, "\0")) {
-            return $this->reply(422, ['error' => 'Enter your username and password.']);
+            return $this->loginFailure($fallback, 422, 'Enter your username and password.');
         }
         $username = strtolower(trim($username));
 
@@ -59,22 +82,35 @@ class AuthApi extends FormApiController
             $ipAllowed = $limiter->allow('login-ip:' . $this->request->getIPAddress(), 30, 900);
             $userAllowed = $limiter->allow('login-user:' . $username, 10, 900);
             if (!$ipAllowed || !$userAllowed) {
-                return $this->reply(429, ['error' => 'Too many sign-in attempts. Please try again in 15 minutes.']);
+                return $this->loginFailure($fallback, 429, 'Too many sign-in attempts. Please try again in 15 minutes.');
             }
 
             $user = (new UserModel())->where('username', $username)->first();
             // A fixed dummy hash keeps password checking work similar for unknown users.
             $hash = $user['password_hash'] ?? '$2y$12$6nmcWDGlV.VQ4G6V3To8AuawPs4XA.xVqwwa85OQ8rcQmJJz7P3xa';
             $passwordMatches = password_verify($password, $hash);
-            if (!$user || !$passwordMatches || (int) $user['approved'] !== 1) {
-                return $this->reply(401, ['error' => 'Unable to sign in. Check your credentials and ask IT to confirm account approval.']);
+            if (!$user || !$passwordMatches || (int) $user['approved'] !== 1 || (int) ($user['is_active'] ?? 1) !== 1) {
+                return $this->loginFailure($fallback, 401, 'Unable to sign in. Check your credentials and ask IT to confirm account approval.');
             }
 
             (new LocalAuth())->login($user);
-            return $this->reply(200, ['message' => 'Signed in successfully.']);
+            if ($fallback) {
+                $destination = $user['role'] === 'customer' ? site_url('') : site_url('portal');
+                return redirect()->to($destination);
+            }
+            return $this->reply(200, ['message' => 'Signed in successfully.', 'role' => $user['role']]);
         } catch (\Throwable $exception) {
-            return $this->reply(503, ['error' => 'Sign-in is unavailable. Please ask the administrator to check the local database.']);
+            return $this->loginFailure($fallback, 503, 'Sign-in is unavailable. Please ask the administrator to check the local database.');
         }
+    }
+
+    private function loginFailure(bool $fallback, int $status, string $message): ResponseInterface
+    {
+        if ($fallback) {
+            return redirect()->to(site_url('login'))->with('login_error', $message);
+        }
+
+        return $this->reply($status, ['error' => $message]);
     }
 
     public function logout(): ResponseInterface
