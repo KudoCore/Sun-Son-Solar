@@ -761,11 +761,12 @@
       }
       .portal-art {
         min-height: 680px;
-        background: radial-gradient(
-          ellipse at 60% 35%,
-          #44654b,
-          var(--green) 65%
-        );
+        background: linear-gradient(
+            180deg,
+            rgba(22, 48, 34, 0.32),
+            rgba(22, 48, 34, 0.74)
+          ),
+          url("solar-login.jpg") center 56% / cover no-repeat;
         padding: 40px;
         border-radius: 16px;
         display: flex;
