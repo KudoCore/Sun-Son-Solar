@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Create a customer account | Sun Son Solar Inc.</title>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="<?= esc(base_url('assets/site.css'), 'attr') ?>">
+  <link rel="stylesheet" href="<?= esc(base_url('assets/site.css') . '?v=solar-login', 'attr') ?>">
 </head>
 <body data-page="register">
   <a class="skip" href="#main">Skip to registration</a>
   <header><div class="nav wrap"><a class="brand" href="<?= esc(site_url(), 'attr') ?>"><span class="brand-icon">☀</span><span>SUN SON<span class="brand-small">SOLAR INC.</span></span></a><nav><a href="<?= esc(site_url('services'), 'attr') ?>">Services</a><a href="<?= esc(site_url('faq'), 'attr') ?>">FAQ</a><a href="<?= esc(site_url('login'), 'attr') ?>">Log in</a></nav></div></header>
   <main id="main" class="portal-shell register-shell wrap">
-    <aside class="portal-art"><p class="eyebrow">YOUR SOLAR JOURNEY STARTS HERE</p><div class="portal-emblem" aria-hidden="true">☀</div><div><h1>Good energy.<br>Made personal.</h1><p>Create a customer account to manage bookings, service updates and support.</p></div><span class="art-bottom">SUN SON SOLAR INC. / CUSTOMER PORTAL</span></aside>
+    <aside class="portal-art"><p class="eyebrow">YOUR SOLAR JOURNEY STARTS HERE</p><div><h1>Good energy.<br>Made personal.</h1><p>Create a customer account to manage bookings, service updates and support.</p></div><span class="art-bottom">SUN SON SOLAR INC. / CUSTOMER PORTAL</span></aside>
     <section class="portal-form"><p class="eyebrow">CUSTOMER REGISTRATION</p><h2>Create your account.</h2><p class="form-note">All fields are required except middle name. Employees must be added by an Admin or HR team member.</p>
       <form id="register-form">
         <div class="fields-grid"><label>First name *<input name="first_name" required maxlength="100" autocomplete="given-name"></label><label>Middle name<input name="middle_name" maxlength="100" autocomplete="additional-name"></label><label>Last name *<input name="last_name" required maxlength="100" autocomplete="family-name"></label><label>Birthdate *<input type="date" name="birthday" required autocomplete="bday"></label><label>Gender *<select name="gender" required><option value="">Choose an option</option><option>Woman</option><option>Man</option><option>Non-binary</option><option>Self-described</option><option>Prefer not to say</option></select></label><label>Email *<input type="email" name="email" required maxlength="254" autocomplete="email"></label><label>Phone number *<input type="tel" name="phone" required maxlength="30" autocomplete="tel"></label><label>Address *<input name="address" required maxlength="300" autocomplete="street-address"></label></div>

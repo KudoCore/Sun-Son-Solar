@@ -30,7 +30,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="<?= esc(base_url('assets'), 'attr') ?>/favicon.svg" type="image/svg+xml" />
     <!-- Page styling: edit the CSS below to change the design. -->
-    <link rel="stylesheet" href="<?= esc(base_url('assets/site.css'), 'attr') ?>" />
+    <link rel="stylesheet" href="<?= esc(base_url('assets/site.css') . '?v=solar-login', 'attr') ?>" />
     <link
       rel="canonical"
       href="<?= esc(site_url('login'), 'attr') ?>"
@@ -86,7 +86,6 @@
       <section class="portal-shell wrap">
         <aside class="portal-art">
           <p class="eyebrow">GOOD TO SEE YOU AGAIN</p>
-          <div class="portal-emblem" aria-hidden="true">☀</div>
           <div>
             <h1>Your workday.<br />A brighter start.</h1>
             <p>
